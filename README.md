@@ -25,8 +25,12 @@ other (data) graphs.  When data graphs use the same schemas, they are
 generally interoperable.
 
 A _movable_ schema is one which does not depend on the URIs of its
-elements for their meaning.  Instead, it depends on a natural language
-definition.
+elements for their meaning.  Instead, it depends on the text of a
+natural language definition.  (But don't worry, there's no AI
+here. This is just simple string matching.  The meaning of the text
+only matters to human readers.)
+
+### Example
 
 For example, imagine you need a "family name" property.
 
@@ -50,16 +54,16 @@ In its simplest mode, schemove reads an RDF data file or schema and
 checks whether all its schema terms are movable.  Any which are not
 are reported as errors.
 
-```sh
-schemove --check input.ttl
+```console
+$ schemove --check input.ttl
 ```
 
 Certain domain can be treated as trustworthy enough that we don't need
 their schemas to be movable.  You can let them by like this:
 
 
-```sh
-schemove --except w3.org --except schema.org --check input.ttl
+```console
+$ schemove --except w3.org --except schema.org --check input.ttl
 ```
 
 (The schemove machinery itself treats a few URIs as defined by fiat,
@@ -71,16 +75,16 @@ If a file passes "--check", you can run it in default mode which
 gathers an includes all needed definitions.  The output will be
 data which retains its meaning without the rest of the web.
 
-```sh
-schemove input.ttl > output-including-schema.ttl
+```console
+$ schemove input.ttl > output-including-schema.ttl
 ```
 
 (We probably want several versions for what URIs to use. --keep, --fragment, --blank, --prefix=..., )
 
 In practice, you may want the schema to be in a different file:
 
-```sh
-schemove --local appendable-schema.ttl input.ttl > output.ttl
+```console
+$ schemove --local appendable-schema.ttl input.ttl > output.ttl
 ```
 
 ## API
