@@ -1,0 +1,27 @@
+{
+  "name": "schemove",
+  "version": "0.0.1",
+  "description": "Tools for working with movable RDF schemas",
+  "main": "index.js",
+  "scripts": {
+    "test": "standard && tap --cov test[a-z0-9-_]*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sandhawke/schemove.git"
+  },
+  "keywords": [
+    "RDF",
+    "linked",
+    "data",
+    "ontology",
+    "vocabulary",
+    "schema"
+  ],
+  "author": "Sandro Hawke (http://hawke.org/sandro)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sandhawke/schemove/issues"
+  },
+  "homepage": "https://github.com/sandhawke/schemove#readme"
+}
