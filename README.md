@@ -10,12 +10,19 @@ with movable schemas that have moved.
 
 Because:
 
-1. The schema you want to use might go off-line at some point
-2. The schema you want to use might be changed incompatibly, some day
-3. You want to offer a schema without needing to keep a server up 24x7 forever
-4. You want to offer a schema without needing that server to remain secure
-5. You want to offer a schema without being well known and widely trusted
-6. You want your code to automatically handle schema evolution
+1. You don't have quite enough faith in the people hosting a schema you want to use. You're concerned it might go offline or be changed in some way that causes problems.
+2. You want to offer a schema without asking its users to have faith in you maintaining it, safely, forever
+3. You don't want to have to maintain it, safely, forever
+4. You want your data and software to automatically handle schemas changing over time
+
+Sounds good?
+
+Of course it's not all perfect:
+
+* You don't get benefits 2 and 3 until you can assume everyone using your schema is using this software (or something compatible).  For now, it's best to offer stable hosting of your schema if you can, and push people to use movable schema software to reduce your responsibility
+* Benefits 1 and 4 require people to make their schemas movable.
+
+TBD point to a site where we can find and share movable schemas.
 
 ## What Is A Movable Schema?
 
@@ -90,3 +97,13 @@ $ schemove --local appendable-schema.ttl input.ttl > output.ttl
 ## API
 
 TBD
+
+Something like scm.rename(quadstore, myschema)
+
+where myschema might even default to something like
+require('../schema.ttl'), so it's naturally in your app directory?
+
+## Formats
+
+RDF is read using TBD, so currently the acceptable formats are X, Y, Z.  Data is output in the same format read, unless ...    Inputs may be URLs or filenames.
+
