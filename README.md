@@ -1,3 +1,4 @@
+status: not yet implemented, sorry
 
 # schemove
 
@@ -19,14 +20,25 @@ Sounds good?
 
 Of course it's not all perfect:
 
-* You don't get benefits 2 and 3 until you can assume everyone using your schema is using this software (or something compatible).  For now, it's best to offer stable hosting of your schema if you can, and push people to use movable schema software to reduce your responsibility
+
+* You don't get benefits 2 and 3 until you can assume everyone using your schema is using this software (or something compatible).  For now, it's best to offer stable hosting of your schema if you can, and push people to use movable schema software to reduce your responsibility.
 * Benefits 1 and 4 require people to make their schemas movable.
 
-TBD point to a site where we can find and share movable schemas.
+TBD point to a site where we can find and share and create movable schemas.
+
+## What Do I Have To Do?
+
+### Reading RDF
+
+### Write Data
+
+### Creating a Movable Schema
+
+### Converting an Existing Schema
 
 ## What Is A Movable Schema?
 
-An RDF schema, sometimes called an "ontology" or "vocabulary", is a RDF
+An RDF schema, sometimes called an "ontology" or "vocabulary", is an RDF
 graph which defines properties, classes, and individuals to be used in
 other (data) graphs.  When data graphs use the same schemas, they are
 generally interoperable.
@@ -39,7 +51,7 @@ only matters to human readers.)
 
 ### Example
 
-For example, imagine you need a "family name" property.
+Imagine you need a "family name" property.
 
 With a traditional non-movable schema, you could use <http://xmlns.com/foaf/0.1/familyName>.  That URL is accepted as denoting the family name property. It gets that meaning by common practice where the owner of xmlns.com is granted some freedom in specifying the meaning of terms hosted there, and the community tends to adopt that meaning. (See [Social Meaning of RDF](https://www.w3.org/wiki/SocialMeaning).)
 
@@ -49,24 +61,22 @@ With a movable schema, you can use whatever URL you like (include a fragment URL
 :familyName mov:propdef "The family name or surname. This is part of a person's name which is typically shared with members of their immediate family, in contrast with their given name." 
 ```
 
-With a non-movable schema, the machine doesn't care about the text of the URI -- it just looks for an exact match of that URI in other places.
+With a _non-movable_ schema, the machine doesn't care about the text of the URI -- it just looks for an exact match of that _URI string_.
 
-With a movable schema, the machine doesn't care about the text of the definition -- it just looks for an exact match of that text in other places.
+With a _movable_ schema, the machine doesn't care about the text of the definition -- it just looks for an exact match of that _definition string_.
 
-With movable schemas, two data graphs will be intererable even if they use different URLs for familyName, as long as they use that exact same definition for it.
+With movable schemas, two data graphs will be interoperable even if they use different URLs for familyName, as long as they use that exact same definition for it.
 
 ## Command Line
 
-In its simplest mode, schemove reads an RDF data file or schema and
-checks whether all its schema terms are movable.  Any which are not
-are reported as errors.
+In its simplest mode, schemove reads an RDF data file or schema and checks whether all its schema terms are movable.  Any terms without a movable definition are reported as errors.
 
 ```console
 $ schemove --check input.ttl
 ```
 
 Certain domain can be treated as trustworthy enough that we don't need
-their schemas to be movable.  You can let them by like this:
+their schemas to be movable.  You can declare them like this:
 
 
 ```console
@@ -79,7 +89,7 @@ defined in long-standing W3C Recommendations and hosted at w3.org,
 such as rdf:type and owl:InverseFunctionalProperty.)
 
 If a file passes "--check", you can run it in default mode which
-gathers an includes all needed definitions.  The output will be
+gathers and includes all needed definitions.  The output will be
 data which retains its meaning without the rest of the web.
 
 ```console
@@ -100,10 +110,9 @@ TBD
 
 Something like scm.rename(quadstore, myschema)
 
-where myschema might even default to something like
-require('../schema.ttl'), so it's naturally in your app directory?
+where myschema might even default to something like require('../../schema.ttl'), so it's naturally in your app directory. Dunno how to really do that in nodejs.
 
 ## Formats
 
-RDF is read using TBD, so currently the acceptable formats are X, Y, Z.  Data is output in the same format read, unless ...    Inputs may be URLs or filenames.
+RDF is read using (TBD), so currently the acceptable formats are (X, Y, Z).  Data is output in the same format read, unless (TBD).  Inputs may be URLs or filenames.
 
