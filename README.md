@@ -26,16 +26,6 @@ Of course it's not all perfect:
 
 TBD point to a site where we can find and share and create movable schemas.
 
-## What Do I Have To Do?
-
-### Reading RDF
-
-### Write Data
-
-### Creating a Movable Schema
-
-### Converting an Existing Schema
-
 ## What Is A Movable Schema?
 
 An RDF schema, sometimes called an "ontology" or "vocabulary", is an RDF
